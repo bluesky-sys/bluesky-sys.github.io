@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"deer.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="虚拟机Vmware tools安装和共享文件夹的查看 进入Linux系统，下载VMware Tools，复制VMwareTools-10.3.10-13959562.tar.gz到主文件夹，并进行(右键提取到此处)得到VMwareTools-10.3.10-13959562文件夹。  Ctrl+Alt+t打开终端，输入tar xvzf VMwareTools-10.3.10-13959562.ta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一次学习Linux">
+<meta property="og:url" content="http://deer.com/2020/06/01/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0Linux/index.html">
+<meta property="og:site_name" content="有梦想的小刘同学">
+<meta property="og:description" content="虚拟机Vmware tools安装和共享文件夹的查看 进入Linux系统，下载VMware Tools，复制VMwareTools-10.3.10-13959562.tar.gz到主文件夹，并进行(右键提取到此处)得到VMwareTools-10.3.10-13959562文件夹。  Ctrl+Alt+t打开终端，输入tar xvzf VMwareTools-10.3.10-13959562.ta">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-01T15:02:06.858Z">
+<meta property="article:modified_time" content="2020-06-04T14:40:17.777Z">
+<meta property="article:author" content="小刘同学">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://deer.com/2020/06/01/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0Linux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第一次学习Linux | 有梦想的小刘同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">有梦想的小刘同学</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://deer.com/2020/06/01/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1111.gif">
+      <meta itemprop="name" content="小刘同学">
+      <meta itemprop="description" content="你要悄悄拔尖，然后惊艳所有人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="有梦想的小刘同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第一次学习Linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-01 23:02:06" itemprop="dateCreated datePublished" datetime="2020-06-01T23:02:06+08:00">2020-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-04 22:40:17" itemprop="dateModified" datetime="2020-06-04T22:40:17+08:00">2020-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="虚拟机Vmware-tools安装和共享文件夹的查看"><a href="#虚拟机Vmware-tools安装和共享文件夹的查看" class="headerlink" title="虚拟机Vmware tools安装和共享文件夹的查看"></a>虚拟机Vmware tools安装和共享文件夹的查看</h1><ol>
+<li><p>进入Linux系统，下载VMware Tools，复制VMwareTools-10.3.10-13959562.tar.gz到主文件夹，并进行(右键提取到此处)得到VMwareTools-10.3.10-13959562文件夹。</p>
+</li>
+<li><p>Ctrl+Alt+t打开终端，输入tar xvzf VMwareTools-10.3.10-13959562.tar.gz             回车，得到vmware-tools-distrib文件夹。</p>
+</li>
+<li><p>再次打开终端，输入sudo su→输入密码，进入root权限，输入cd vmware-tools-distrib，进入vmware-tools-distrib文件夹里。</p>
+</li>
+<li><p>接着，输入输入sudo ./vmware-install.pl(回车)，第一个停顿出现 <strong>do you still want to proceed with this installation? [no]</strong>输入yes，接下来一直回车！看到Enjoy之后就安装完成了。</p>
+<p><strong>步骤参考</strong><ul><a href="https://b23.tv/CVApEg" target="_blank" rel="noopener">https://b23.tv/CVApEg</a></ul></p>
+<p>安装之后<br>在Vmware菜单栏中去设置共享文件夹</p>
+</li>
+</ol>
+<p>进入linux系统，cd /mnt/hgfs 用命令ls 查看windows共享的文件夹内容。</p>
+<h2 id="打开-txt文件进行内容查看"><a href="#打开-txt文件进行内容查看" class="headerlink" title="打开 .txt文件进行内容查看"></a>打开 .txt文件进行内容查看</h2><ul>
+<li><p>nano &lt;文件名&gt; </p>
+</li>
+<li><p>vi &lt;文件名&gt; </p>
+<p>主要大小写敏感，推荐使用前者，界面比较友好。</p>
+</li>
+</ul>
+<h1 id="linux基本操作"><a href="#linux基本操作" class="headerlink" title="linux基本操作"></a>linux基本操作</h1><p>(1)在windows共享文件夹里新建一个文本文件，命名为.txt，文件里写入内容<br>(2)ctrl+alt+t进入字符虚拟终端，使用root用户登录<br>(3)将学号.txt复制到新建目录abc中 （新建目录需授权）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp 123456.txt ~&#x2F;abc&#x2F;</span><br></pre></td></tr></table></figure>
+<p>(4)查看/abc目录中的学号.txt文件 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls  or ls -a</span><br></pre></td></tr></table></figure>
+<p>(5)删除/abc目录中的学号.txt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f 123456.txt</span><br></pre></td></tr></table></figure>
+<h1 id="linux下vi命令"><a href="#linux下vi命令" class="headerlink" title="linux下vi命令"></a>linux下vi命令</h1><p>1.进入文件  vim 文件名（vim test.txt）</p>
+<p>2.编辑完成之后，按ESC键 跳到命令模式（命令前面冒号是必要的）：</p>
+<p>　　 :w   保存文件但不退出vi</p>
+<p>　　 :w file 将修改另外保存到file中，不退出vi</p>
+<p>　　 :w!   强制保存，不推出vi</p>
+<p>　　 :wq  保存文件并退出vi</p>
+<p>　　 :wq! 强制保存文件，并退出vi</p>
+<p>　　 :q  不保存文件，退出vi</p>
+<p>　　 :q! 不保存文件，强制退出vi</p>
+<p>　　 :e! 放弃所有修改，从上次保存文件开始再编辑</p>
+<h1 id="linux命令-复制文件-目录到指定目录下"><a href="#linux命令-复制文件-目录到指定目录下" class="headerlink" title="linux命令_复制文件/目录到指定目录下"></a>linux命令_复制文件/目录到指定目录下</h1><p>复制文件：把1.txt         复制到根目录下的sbin目录</p>
+<pre><code>cp +文件名（可带路径）+目标路径（带路径）
+
+                如：   cp   1.txt  ~/sbin/</code></pre><p>复制目录：把release      复制到根目录下的nfs目录下</p>
+<p>   1.【cp】 +【-r】+【目录名（可带路径）】+【目标路径（带路径）】      -r  表示复制目录下所有子目录以及文件</p>
+<pre><code>如：cp -r release  ~/nfs/</code></pre><p>   2 【cp】 +【目录名/<em>】+【目标路径（带路径）】                              /</em>表示目录下所有文件和目录   *是通配符</p>
+<pre><code>如： cp release/* ~/nfs/</code></pre><h1 id="linux新建文件夹以及给文件夹付给相应的权限"><a href="#linux新建文件夹以及给文件夹付给相应的权限" class="headerlink" title="linux新建文件夹以及给文件夹付给相应的权限"></a>linux新建文件夹以及给文件夹付给相应的权限</h1><p>用sudo su进入root权限</p>
+<p>mkdir  文件夹名</p>
+<p>ls  -la 查看文件夹权限</p>
+<p>此时如果觉得权限不够的话，我们可以通过赋权限的方式给予文件夹权限赋予。</p>
+<p>chmod -R 777 文件夹名</p>
+<p>这个是给予这个文件夹最高的权限。</p>
+<p>赋予完成后，可以在直接查询 ls -la</p>
+<p>上述之后，文件夹就建立完成了。此时，如果觉得文件夹有问题，我们也可以对文件夹进行删除操作。使用的命令为：</p>
+<p>rm -rf 文件夹名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/30/%E8%AE%A4%E8%AF%86Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="认识Linux服务器">
+      <i class="fa fa-chevron-left"></i> 认识Linux服务器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/02/linux%E7%9A%84vi%E5%91%BD%E4%BB%A4/" rel="next" title="linux的vi命令">
+      linux的vi命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机Vmware-tools安装和共享文件夹的查看"><span class="nav-number">1.</span> <span class="nav-text">虚拟机Vmware tools安装和共享文件夹的查看</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-txt文件进行内容查看"><span class="nav-number">1.1.</span> <span class="nav-text">打开 .txt文件进行内容查看</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux基本操作"><span class="nav-number">2.</span> <span class="nav-text">linux基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux下vi命令"><span class="nav-number">3.</span> <span class="nav-text">linux下vi命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令-复制文件-目录到指定目录下"><span class="nav-number">4.</span> <span class="nav-text">linux命令_复制文件&#x2F;目录到指定目录下</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux新建文件夹以及给文件夹付给相应的权限"><span class="nav-number">5.</span> <span class="nav-text">linux新建文件夹以及给文件夹付给相应的权限</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小刘同学"
+      src="/images/1111.gif">
+  <p class="site-author-name" itemprop="name">小刘同学</p>
+  <div class="site-description" itemprop="description">你要悄悄拔尖，然后惊艳所有人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小刘同学</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
